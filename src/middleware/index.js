@@ -1,7 +1,9 @@
 'use strict';
 
+const signup = require('./signup');
+
 const handler = require('feathers-errors/handler');
-const notFound = require('./not-found-handler');
+const notFound = require('./not-found-handler'); // ProTip: Just like Express, most middleware should be registered before the notFound middleware.
 const logger = require('./logger');
 
 module.exports = function() {
@@ -10,6 +12,7 @@ module.exports = function() {
   // handling middleware should go last.
   const app = this;
 
+  app.post('/signup', signup(app));
   app.use(notFound());
   app.use(logger(app));
   app.use(handler());
