@@ -7,7 +7,7 @@ var ChatApp = require('./components/ChatApp');
 var HomePage = require('./components/HomePage')
 
 
-const socket = io();
+const socket = io(); //"http://localhost:3030"
 const app = feathers()
   .configure(feathers.socketio(socket))
   .configure(feathers.hooks())
