@@ -1,22 +1,19 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var io = require('socket.io-client');
-var feathers = require('feathers-client');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
-var ChatApp = require('./components/ChatApp');
-var HomePage = require('./components/HomePage')
+const App = require('./components/app')
 
 
-const socket = io(); //"http://localhost:3030"
-const app = feathers()
-  .configure(feathers.socketio(socket))
-  .configure(feathers.hooks())
-  // Use localStorage to store our login token
-  .configure(feathers.authentication({
-    storage: window.localStorage
-  }));
+// const socket = io(); //"http://localhost:3030"
+// const app = feathers()
+//   .configure(feathers.socketio(socket))
+//   .configure(feathers.hooks())
+//   // Use localStorage to store our login token
+//   .configure(feathers.authentication({
+//     storage: window.localStorage
+//   }));
 
-ReactDOM.render(<HomePage />, document.querySelector('main'));
+ReactDOM.render(<App />, document.querySelector('main'));
 
 // app.authenticate().then(() => {
 //   ReactDOM.render(<HomePage />, document.querySelector('#main'));
