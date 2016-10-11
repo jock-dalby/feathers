@@ -22,7 +22,8 @@ const App = require('./components/app')
 const socket = io()
 
 const api = feathers()
-  .configure(feathers.socketio(socket))
+  // .configure(feathers.socketio(socket))
+  .configure(feathers.rest('http://localhost:3030').fetch(fetch))
   // Use localStorage to store our login token
   .configure(feathers.hooks())
   // Use localStorage to store our login token

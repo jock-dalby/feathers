@@ -1,8 +1,8 @@
-var React = require('react');
+const React = require('react');
 
-var ComposeMessage = require('./ComposeMessage');
-var MessageList = require('./MessageList');
-var UserList = require('./UserList');
+const UserList = require('./userList')
+const MessageList = require('./messageList')
+const ComposeMessage = require('./composeMessage')
 
 const ChatApp = React.createClass({
   getInitialState() {
@@ -53,4 +53,4 @@ const ChatApp = React.createClass({
   }
 });
 
-module.exports = ChatApp;
+module.exports= ChatApp;

@@ -1,10 +1,11 @@
 const React = require('react');
-const { BrowserRouter, Match, Miss, Link } = require('react-router')
+const { BrowserRouter, Match, Miss, Link, Redirect } = require('react-router')
 
 // components
 const HomePage = require('./homePage')
 const Login = require('./login')
 const SignUp = require('./signup')
+const Chat = require('./chatApp')
 
 // Other modules
 const debug = require('debug')('components:app')
@@ -20,22 +21,19 @@ var wrapComponent = function(Component, props) {
 };
 
 const App = React.createClass({
-  getInititalState: function () {
+  getInitialState: function () {
     return {
       isAuthenticated: false,
       user: null,
       users: [],
       messages: []
     }
-    this.addUser = this.addUser.bind(this)
-    this.login = this.login.bind(this)
   },
 
   componentDidMount: function () {
     this.props.api.authenticate()
     .then((res) => {
       debug('authenticated')
-
       this.setState({ isAuthenticated: true })
     })
     .catch(err => {
@@ -44,7 +42,16 @@ const App = React.createClass({
   },
 
   login: function (user) {
-    this.setState({authenticated: true})
+    console.log("USER ", user)
+    this.props.api.authenticate({
+      type: 'local',
+      email: user.email,
+      password: user.password
+    })
+    .then(() => {
+      debug('authenticated')
+        this.setState({ isAuthenticated: true })
+    })
   },
 
   addMessage: function (newMessage) {
@@ -53,10 +60,11 @@ const App = React.createClass({
   },
 
   addUser: function (newUser) {
-    const userService = this.props.api.service('user')
+    debug('signing up!!!!', newUser)
+    const userService = this.props.api.service('/users')
     userService.create(newUser)
     .then((res) => {
-      debug('user created ', (res))
+      debug('user created ', res)
     })
     .catch(err => {
       debug(err)
@@ -64,12 +72,23 @@ const App = React.createClass({
   },
 
   render() {
+    console.log('this ', this)
+    const { isAuthenticated } = this.state
     return (
       <BrowserRouter>
         <div>
-          <Match exactly pattern="/" component={HomePage} />
-          <Match pattern="/login" component={wrapComponent(Login, { login: this.login})} />
-          <Match pattern="/sign-up" component={wrapComponent(SignUp, { addUser: this.addUser})}/>
+          {
+            isAuthenticated ? (
+              <Redirect to="/chat" />
+            ) : <Match exactly pattern="/" component={HomePage} />
+          }
+          <Match exactly pattern="/login" component={wrapComponent(Login, { login: this.login})} />
+          <Match exactly pattern="/sign-up" component={wrapComponent(SignUp, { addUser: this.addUser})}/>
+          {
+            isAuthenticated ? (
+              <Match pattern="/chat" component={Chat} />
+            ) : null
+          }
         </div>
       </BrowserRouter>
     )

@@ -6,9 +6,6 @@ const SignUp = React.createClass({
       email: '',
       password: ''
     }
-    this.handleEmail = this.handleEmail.bind(this)
-    this.handlePassword = this.handlePassword.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   },
 
   handleSubmit: function (e) {

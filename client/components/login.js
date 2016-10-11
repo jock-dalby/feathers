@@ -13,6 +13,7 @@ const Login = React.createClass({
 
   handleSubmit: function (e) {
     e.preventDefault();
+    console.log('props ', this.props)
     this.props.login(this.state)
   },
 
@@ -33,7 +34,7 @@ const Login = React.createClass({
         </div>
         <div className="row">
           <div className="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop text-center">
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form" method="post" action="/" onSubmit={this.handleSubmit}>
               <fieldset>
                 <input className="block" type="email" name="email" placeholder="email" onChange={this.handleEmail} />
               </fieldset>

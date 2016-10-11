@@ -8,14 +8,14 @@ const UserList = React.createClass({
   render() {
     const users = this.props.users;
 
-    return <aside className="sidebar col col-3 flex flex-column flex-space-between">
-      <header className="flex flex-row flex-center">
-        <h4 className="font-300 text-center">
-          <span className="font-600 online-count">{users.length}</span> users
-        </h4>
-      </header>
-
-      <ul className="flex flex-column flex-1 list-unstyled user-list">
+    return (
+      <aside className="sidebar col col-3 flex flex-column flex-space-between">
+        <header className="flex flex-row flex-center">
+          <h4 className="font-300 text-center">
+            <span className="font-600 online-count">{users.length}</span> users
+          </h4>
+        </header>
+        <ul className="flex flex-column flex-1 list-unstyled user-list">
         {users.map(user =>
           <li>
             <a className="block relative" href="#">
@@ -24,13 +24,14 @@ const UserList = React.createClass({
             </a>
           </li>
         )}
-      </ul>
-      <footer className="flex flex-row flex-center">
-        <a href="#" className="logout button button-primary" onClick={this.logout}>
+        </ul>
+        <footer className="flex flex-row flex-center">
+          <a href="#" className="logout button button-primary" onClick={this.logout}>
           Sign Out
-        </a>
-      </footer>
-    </aside>;
+          </a>
+        </footer>
+      </aside>
+    );
   }
 });
 
