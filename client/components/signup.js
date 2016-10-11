@@ -1,8 +1,11 @@
 var React = require('react');
 
 const SignUp = React.createClass({
-  handleSubmit: function () {
-
+  handleSubmit: function (e) {
+    alert('it works!');
+    e.preventDefault();
+    console.log(e.target.value)
+    this.props.addUser(e.target)
   },
   render: function () {
     return (
@@ -14,7 +17,7 @@ const SignUp = React.createClass({
         </div>
         <div className="row">
           <div className="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop text-center">
-            <form className="form" onSubmit={this.props.handleSubmit}>
+            <form className="form" action="/" onSubmit={this.handleSubmit}>
               <fieldset>
                 <input className="block" type="email" name="email" placeholder="email" />
               </fieldset>
@@ -22,7 +25,7 @@ const SignUp = React.createClass({
                 <input className="block" type="password" name="password" placeholder="password" />
               </fieldset>
               <button type="submit" className="button button-primary block signup">
-                Signup
+                Sign up
               </button>
             </form>
           </div>
