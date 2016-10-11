@@ -13,7 +13,7 @@ const App = require('./components/app')
 //     storage: window.localStorage
 //   }));
 
-ReactDOM.render(<App />, document.querySelector('main'));
+ReactDOM.render(<App />, document.getElementById('main'));
 
 // app.authenticate().then(() => {
 //   ReactDOM.render(<HomePage />, document.querySelector('#main'));

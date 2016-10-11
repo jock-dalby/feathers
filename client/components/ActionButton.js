@@ -7,7 +7,7 @@ const ActionButton = React.createClass({
     return (
       <div className="row">
         <div className="col-12">
-        <Link to={this.props.linkWord}  className="button button-primary block">
+        <Link to={this.props.link}  className="button button-primary block">
           {this.props.text}
         </Link>
         </div>
