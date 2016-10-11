@@ -1,6 +1,9 @@
 var React = require('react');
 
 const SignUp = React.createClass({
+  handleSubmit: function () {
+
+  },
   render: function () {
     return (
       <main className="login container">
@@ -11,7 +14,7 @@ const SignUp = React.createClass({
         </div>
         <div className="row">
           <div className="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop text-center">
-            <form className="form" method="post" action="/signup">
+            <form className="form" onSubmit={this.props.handleSubmit}>
               <fieldset>
                 <input className="block" type="email" name="email" placeholder="email" />
               </fieldset>

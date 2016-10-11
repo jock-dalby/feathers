@@ -38,6 +38,7 @@
   "domready": "^1.0.8",
   "feathers": "^2.0.0",
   "feathers-authentication": "^0.7.0",
+  "feathers-client": "^1.6.1",
   "feathers-configuration": "^0.2.1",
   "feathers-errors": "^2.0.1",
   "feathers-hooks": "^1.5.0",
@@ -53,6 +54,7 @@
   "react-dom": "^15.3.2",
   "react-router": "^4.0.0-alpha.4",
   "serve-favicon": "^2.3.0",
+  "socket.io-client": "^1.5.0",
   "webpack": "^1.13.2",
   "webpack-dev-server": "^1.16.2",
   "winston": "^2.2.0"

@@ -7,6 +7,12 @@ const Login = require('./login')
 const SignUp = require('./signup')
 
 const App = React.createClass({
+  getInititalState: function () {
+    return {
+      users: [],
+      messages: []
+    }
+  },
   render() {
     return (
       <BrowserRouter>
