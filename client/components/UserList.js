@@ -1,5 +1,7 @@
 var React = require('react');
 
+const UserItem = require('./userItem')
+
 const PLACEHOLDER = 'https://placeimg.com/60/60/people';
 // An anonymous user if the message does not have that information
 const dummyUser = {
@@ -23,14 +25,9 @@ const UserList = React.createClass({
           </h4>
         </header>
         <ul className="flex flex-column flex-1 list-unstyled user-list">
-        {users.map((user, i) =>
-          <li key={i}>
-            <a className="block relative" href="#">
-              <img src={user.avatar || PLACEHOLDER} className="avatar" />
-              <span className="absolute username">{user.email}</span>
-            </a>
-          </li>
-        )}
+          {this.props.users.map((user, index) => {
+              return <UserItem key={index} user={user} />
+            })}
         </ul>
         <footer className="flex flex-row flex-center">
           <a href="#" className="logout button button-primary" onClick={this.logout}>

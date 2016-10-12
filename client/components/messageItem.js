@@ -15,8 +15,7 @@ const MessageItem = React.createClass({
 
     const message = this.props.message
     const sender = message.sentBy || dummyUser
-    console.log('message Item props ', this.props)
-
+    console.log('mesage ', message)
     return (
       <div className="message flex flex-row">
         <img src={sender.avatar || PLACEHOLDER} alt={sender.email} className="avatar" />

@@ -65,6 +65,7 @@ const App = React.createClass({
     userService.create(newUser)
     .then((res) => {
       debug('user created ', res)
+      {this.login(newUser)}
     })
     .catch(err => {
       debug(err)

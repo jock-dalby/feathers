@@ -12,12 +12,6 @@ const ChatApp = React.createClass({
     };
   },
 
-  componentDidUpdate: function() {
-    // Whenever something happened, scroll to the bottom of the chat window
-    // const node = this.getDOMNode().querySelector('.chat');
-    // node.scrollTop = node.scrollHeight - node.clientHeight;
-  },
-
   componentDidMount() {
     const userService = this.props.api.service('users');
     const messageService = this.props.api.service('messages');
