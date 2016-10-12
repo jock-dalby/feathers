@@ -5,7 +5,7 @@ const { BrowserRouter, Match, Miss, Link, Redirect } = require('react-router')
 const HomePage = require('./homePage')
 const Login = require('./login')
 const SignUp = require('./signup')
-const Chat = require('./chatApp')
+const ChatApp = require('./chatApp')
 
 // Other modules
 const debug = require('debug')('components:app')
@@ -72,21 +72,20 @@ const App = React.createClass({
   },
 
   render() {
-    console.log('this ', this)
     const { isAuthenticated } = this.state
     return (
       <BrowserRouter>
         <div>
           {
             isAuthenticated ? (
-              <Redirect to="/chat" />
+              <Redirect to="/chatApp" />
             ) : <Match exactly pattern="/" component={HomePage} />
           }
           <Match exactly pattern="/login" component={wrapComponent(Login, { login: this.login})} />
           <Match exactly pattern="/sign-up" component={wrapComponent(SignUp, { addUser: this.addUser})}/>
           {
             isAuthenticated ? (
-              <Match pattern="/chat" component={Chat} />
+              <Match pattern="/chatApp" component={wrapComponent(ChatApp, { api: this.props.api})} />
             ) : null
           }
         </div>

@@ -11,6 +11,7 @@ const SignUp = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     this.props.addUser(this.state)
+    this.setState({email: '', password: ''})
   },
 
   handleEmail: function (e) {
