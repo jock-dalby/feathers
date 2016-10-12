@@ -6,19 +6,17 @@ const dummyUser = {
   email: 'Anonymous'
 };
 
-const UserItem = React.createClass({
+function UserItem (props) {
 
-  render() {
-    console.log('user ', this.props.user)
-    return (
-      <li>
-        <a className="block relative" href="#">
-          <img src={this.props.user.avatar || PLACEHOLDER} className="avatar" />
-          <span className="absolute username">{this.props.user.email}</span>
-        </a>
-      </li>
-    )
-  }
-});
+  return (
+    <li>
+      <a className="block relative" href="#">
+        <img src={props.user.avatar || PLACEHOLDER} className="avatar" />
+        <span className="absolute username">{props.user.email}</span>
+      </a>
+    </li>
+  )
+}
+
 
 module.exports = UserItem;

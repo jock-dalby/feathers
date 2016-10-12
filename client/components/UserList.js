@@ -2,16 +2,10 @@ var React = require('react');
 
 const UserItem = require('./userItem')
 
-const PLACEHOLDER = 'https://placeimg.com/60/60/people';
-// An anonymous user if the message does not have that information
-const dummyUser = {
-  avatar: PLACEHOLDER,
-  email: 'Anonymous'
-};
-
 const UserList = React.createClass({
   logout() {
-    app.logout().then(() => window.location.href = '/index.html');
+    this.props.api.logout()
+    .then(() => window.location.href = '/');
   },
 
   render() {

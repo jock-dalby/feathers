@@ -5,3 +5,14 @@ body {
 .chat {
   min-height: 90vh;
 }
+
+.login p {
+  color: #2BD092;
+  font-size: 20;
+  font-weight: bolder;
+  line-height: 1.8;
+}
+
+#back {
+  background-color: grey;
+}

@@ -1,19 +1,19 @@
 var React = require('react');
-const { BrowserRouter, Match, Miss, Link } = require('react-router')
+const { Link } = require('react-router')
 
 
-const ActionButton = React.createClass({
-  render: function () {
-    return (
-      <div className="row">
-        <div className="col-12">
-        <Link to={this.props.link}  className="button button-primary block">
-          {this.props.text}
+function ActionButton (props) {
+  return (
+    <div className="row">
+      <div className="col-12">
+        <Link to={props.link}  className="button button-primary block" id={props.back}>
+          {props.text}
         </Link>
-        </div>
       </div>
-    )
-  }
-});
+    </div>
+  )
+}
+
+
 
 module.exports = ActionButton;

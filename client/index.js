@@ -35,13 +35,3 @@ domready(() => {
   ReactDOM.render(
     <App api={api}/>, document.getElementById('main'));
 })
-
-// app.authenticate().then(() => {
-//   ReactDOM.render(<HomePage />, document.querySelector('#main'));
-// }).catch(error => {
-//   if(error.code === 401) {
-//     window.location.href = '/login.html'
-//   }
-//
-//   console.error(error);
-// });
