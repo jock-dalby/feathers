@@ -1,10 +1,13 @@
 var React = require('react');
 
+const ActionButton = require('./actionButton')
+
 const Login = React.createClass({
   getInitialState: function () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
     this.handleEmail = this.handleEmail.bind(this)
     this.handlePassword = this.handlePassword.bind(this)
@@ -13,8 +16,13 @@ const Login = React.createClass({
 
   handleSubmit: function (e) {
     e.preventDefault();
-    console.log('props ', this.props)
     this.props.login(this.state)
+    .then(() => {
+      this.setState({email: '', password: ''})
+    })
+    .catch(err => {
+      this.setState({error: true})
+    })
   },
 
   handleEmail: function (e) {
@@ -25,14 +33,16 @@ const Login = React.createClass({
     this.setState({password: e.target.value})
   },
   render: function () {
+    const { error } = this.state
     return (
       <main className="login container">
         <div className="login row">
           <div className="col-12 col-6-tablet push-3-tablet text-center">
             <h1 className="font-100">Welcome Back</h1>
+            { error ? (<p>Sorry, it appears either your email or password is incorrect. Please try again!</p>) : ""}
           </div>
         </div>
-        <div className="row">
+        <div style={{ marginTop: -20}}className="row">
           <div className="col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop text-center">
             <form className="form" method="post" action="/" onSubmit={this.handleSubmit}>
               <fieldset>
@@ -44,6 +54,7 @@ const Login = React.createClass({
               <button type="submit" className="button button-primary block login">
                 Login
               </button>
+              <ActionButton back="back" text="Sign up" link="/sign-up" />
             </form>
           </div>
         </div>

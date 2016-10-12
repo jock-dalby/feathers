@@ -1,5 +1,7 @@
 var React = require('react');
 
+const ActionButton = require('./actionButton')
+
 const SignUp = React.createClass({
   getInitialState: function () {
     return {
@@ -42,6 +44,7 @@ const SignUp = React.createClass({
               <button type="submit" className="button button-primary block signup">
                 Sign up
               </button>
+              <ActionButton back="back" text="Log in" link="/login" />
             </form>
           </div>
         </div>

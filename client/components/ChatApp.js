@@ -50,7 +50,7 @@ const ChatApp = React.createClass({
 
   render() {
     return <div className="flex flex-row flex-1 clear">
-      <UserList users={this.state.users} />
+      <UserList users={this.state.users} api={this.props.api}/>
       <div className="flex flex-column col col-9">
         <MessageList users={this.state.users} messages={this.state.messages} />
         <ComposeMessage sendMessage={this.sendMessage}/>

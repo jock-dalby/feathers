@@ -2,17 +2,14 @@ var React = require('react');
 
 const MessageItem = require('./messageItem')
 
-const MessageList = React.createClass({
-
-  render() {
+function MessageList(props) {
     return (
     <main className="chat flex flex-column flex-1 clear">
-      {this.props.messages.map((msg, index) => {
+      {props.messages.map((msg, index) => {
           return <MessageItem key={index} message={msg} />
         })}
     </main>
   )
-  }
-});
+}
 
 module.exports = MessageList;

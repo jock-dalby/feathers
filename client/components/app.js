@@ -10,8 +10,6 @@ const ChatApp = require('./chatApp')
 // Other modules
 const debug = require('debug')('components:app')
 
-
-
 var wrapComponent = function(Component, props) {
   return React.createClass({
     render: function() {
@@ -42,8 +40,7 @@ const App = React.createClass({
   },
 
   login: function (user) {
-    console.log("USER ", user)
-    this.props.api.authenticate({
+    return this.props.api.authenticate({
       type: 'local',
       email: user.email,
       password: user.password
@@ -51,7 +48,8 @@ const App = React.createClass({
     .then(() => {
       debug('authenticated')
         this.setState({ isAuthenticated: true })
-    })
+        return true
+      })
   },
 
   addMessage: function (newMessage) {
@@ -82,7 +80,7 @@ const App = React.createClass({
               <Redirect to="/chatApp" />
             ) : <Match exactly pattern="/" component={HomePage} />
           }
-          <Match exactly pattern="/login" component={wrapComponent(Login, { login: this.login})} />
+          <Match exactly pattern="/login" component={wrapComponent(Login, { login: this.login })} />
           <Match exactly pattern="/sign-up" component={wrapComponent(SignUp, { addUser: this.addUser})}/>
           {
             isAuthenticated ? (
